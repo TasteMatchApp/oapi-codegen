@@ -40,12 +40,12 @@ func (siw *ServerInterfaceWrapper) {{$opid}}(w http.ResponseWriter, r *http.Requ
   {{end}}
 
 {{range .SecurityDefinitions}}
-  ctx = context.WithValue(ctx, {{.ProviderName | sanitizeGoIdentity | ucFirst}}Scopes, {{toStringArray .Scopes}})
+  ctx = context.WithValue(ctx, service.{{.ProviderName | sanitizeGoIdentity | ucFirst}}Scopes, {{toStringArray .Scopes}})
 {{end}}
 
   {{if .RequiresParamObject}}
     // Parameter object where we will unmarshal all parameters from the context
-    var params {{.OperationId}}Params
+    var params service.{{.OperationId}}Params
 
     {{range $paramIdx, $param := .QueryParams}}
       {{- if (or (or .Required .IsPassThrough) (or .IsJson .IsStyled)) -}}

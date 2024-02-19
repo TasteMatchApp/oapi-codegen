@@ -2,6 +2,8 @@ module github.com/deepmap/oapi-codegen/v2
 
 go 1.20
 
+//replace github.com/deepmap/oapi-codegen/v2 => github.com/TasteMatchApp/oapi-codegen/v2
+
 require (
 	github.com/getkin/kin-openapi v0.122.0
 	github.com/stretchr/testify v1.8.4
